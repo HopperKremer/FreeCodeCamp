@@ -11,12 +11,22 @@ String.prototype.split()
 */
 
 function titleCase(str) {
-  var strNew = "";
-  var strSplit = str.split(" ");
-  for (var i = 0; i < strSplit.length; i++) {
-    strSplit[i].split("");
-  }
-  return str;
-}
 
-titleCase("I'm a little tea pot");
+  var strArr = str.toLowerCase().split(" "); //Breaks up str into an all lower case array
+
+  var toJoin = []; //We're going to copy to this variable 
+
+  for (var i = 0; i < strArr.length; i++) { //Iterates through items in the arrays
+    toJoin[i] = [];  // INITIATE THE NESTED ARRAY HERE
+    for (var x = 0; x < strArr[i].length; x++) { //Iterates through chars of strArr & copies to toJoin
+
+      if (x === 0) { //First char of word is capitalized before being copied
+        toJoin[i][x] = strArr[i][x].toUpperCase();
+      } else { //The rest of the chars are copied
+        toJoin[i][x] = strArr[i][x];
+      }
+
+    }
+  }
+  return toJoin.join(" "); //Returns toJoin as a string
+}
